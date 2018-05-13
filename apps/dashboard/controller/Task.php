@@ -347,6 +347,39 @@ class Task extends Controller
         $this->export_filename($file_name,$str);
 
     }
+    public function kappa_out($tid)
+    {
+        if(!check_user_status()) {$this->error('您还未登录！', 'user/index/index');}
+        if(!(task_owner($tid)==Cookie::get('uid'))) {$this->error('您无权操作本任务，请检查权限！', 'dashboard/index/index');}
+        $final_csv_result = kappa($tid);
+        $str_li = [];
+        $kappa_key = [];
+        $str_li[]=['Kappa'];
+        foreach ($final_csv_result as $key => $value) {
+            $str_li[0][]=nickname($key);
+            $kappa_key[]=$key;
+        }
+        foreach ($kappa_key as $k_key1) {
+            $str_li_line = [nickname($k_key1)];
+            foreach ($kappa_key as $k_key2) {
+                $str_li_line[]=$final_csv_result[$k_key1][$k_key2];
+            }
+            $str_li[]=$str_li_line;
+        }
+        $str = "";
+        foreach ($str_li as $line) {
+            foreach ($line as $l_key => $l_value) {
+                if ($l_key==(count($line)-1)){
+                    $str.= iconv('utf-8', 'utf-8', $l_value)."\r\n";
+                } else {
+                    $str.= iconv('utf-8', 'utf-8', $l_value).",";
+                }
+            }
+        }
+        $file_name="CSV".date("mdHis",time()).".csv";
+        $this->export_filename($file_name,$str);
+
+    }
     public function export_filename($filename,$data)
     {
       header("Content-type:text/csv");

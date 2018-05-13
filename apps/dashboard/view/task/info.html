@@ -6,6 +6,9 @@
       <p>已经标注的数据遍数：{$min}</p>
       <p>数据数量：{$td_num}</p>
       <p>结果数量：{$re_num}</p>
+      <a href="{:url('dashboard/task/csv_out',['tid' =>$task->id])}" class="btn btn-warning my-2">导出标注结果</a>
+      <a href="{:url('dashboard/task/kappa_out',['tid' =>$task->id])}" class="btn btn-info my-2">导出标注者Kappa系数</a>
+      <p>注:目前Kappa系数仅支持仅有单个标注结果的任务.</p>
       <hr class="mb-4">
       <h4>用户填写情况概览</h4>
 

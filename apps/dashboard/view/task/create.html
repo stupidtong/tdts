@@ -35,6 +35,17 @@
 
             <div class="row">
               <div class="col-md-5 mb-3">
+                <label for="country">特殊任务要求</label>
+                <select class="custom-select d-block w-100" required="" name="sp_task">
+                  <option value="0">选择...</option>
+                  <option value="0">(默认)标注文本任务</option>
+                  <option value="1">选择任务(是或否)</option>
+                  <option value="2">选择任务(是,否或不确定)</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-5 mb-3">
                 <label for="country">数据字段数</label>
                 <select class="custom-select d-block w-100" required="" name="data_num">
                   <option value="1">选择...</option>

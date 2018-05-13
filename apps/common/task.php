@@ -20,9 +20,22 @@ function task_name($tid)
     }
 
 }
+function result_count_raw($td_id)
+{
+    $db_result = Db::name('result')->where('td_id',$td_id)->where('uid',Cookie::get('uid'))->count();
+    return $db_result;
+}
 function result_count($td_id)
 {
     $db_result = Db::name('result')->where('td_id',$td_id)->where('uid',Cookie::get('uid'))->count();
+    if ($db_result==0) {
+        $db_result = '尚未标注';
+    }
+    if ($db_result==1) {
+        $db_re = Db::name('result')->where('td_id',$td_id)->where('uid',Cookie::get('uid'))->find();
+        $db_result = $db_re['result_1'];
+    }
+
     return $db_result;
 }
 function result_user_num($td_id)
@@ -39,7 +52,7 @@ function result_filled($tid)
     $taskdata = TaskdataModel::all(['tid'=>$tid]);
     $r_num = 0;
     foreach ($taskdata as $td) {
-        if (result_count($td->id)>0) {$r_num+=1;}
+        if (result_count_raw($td->id)>0) {$r_num+=1;}
     }
     return $r_num;
 }
