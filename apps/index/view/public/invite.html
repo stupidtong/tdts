@@ -1,0 +1,46 @@
+{include file="public/header" title="邀请用户" /}
+{include file="public/nav" /}
+    <div class="container">
+      <hr class="mb-4"><hr class="mb-4">
+      <div class="order-md-1">
+          <h4 class="mb-3">邀请用户参与到标注任务中</h4>
+          <form class="needs-validation" novalidate="" action="{:url('dashboard/task/invite_msg')}"  method="post">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="firstName">用户昵称</label>
+                <input type="hidden" name='tid' value={$tid}>
+                <input type="text" class="form-control" placeholder="" name="nickname" required="">
+                <div class="invalid-feedback">
+                  Valid first name is required.
+                </div>
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="firstName">用户单位（选填）</label>
+                <input type="text" class="form-control" placeholder="" required="">
+                <div class="invalid-feedback">
+                  Valid first name is required.
+                </div>
+              </div>
+
+            </div>
+
+
+
+            <hr class="mb-4">
+            <button class="btn btn-primary btn-lg btn-block" type="submit">查找用户</button>
+          </form>
+        </div>
+
+      <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2018- TDTS</p>
+        <ul class="list-inline">
+          <li class="list-inline-item"><a href="#">关于我们</a></li>
+          <li class="list-inline-item"><a href="#">联系我们</a></li>
+          <li class="list-inline-item"><a href="#">帮助中心</a></li>
+        </ul>
+      </footer>
+    </div>
+{include file="public/footer" /}

@@ -1,0 +1,107 @@
+{include file="public/header" title="新建标注任务" /}
+{include file="public/nav" /}
+    <div class="container">
+      <hr class="mb-4"><hr class="mb-4">
+      <div class="order-md-1">
+          <h4 class="mb-3">新建标注任务</h4>
+          <form class="needs-validation" novalidate="" action="{:url('dashboard/task/add')}"  method="post">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="firstName">标注任务名</label>
+                <input type="text" class="form-control" placeholder="" name="name" required="">
+                <div class="invalid-feedback">
+                  Valid first name is required.
+                </div>
+              </div>
+
+            </div>
+
+            <div class="mb-3">
+              <label for="email">任务信息</label>
+              <textarea class="form-control" placeholder="填写详细的任务描述" rows="5" name="task_msg"></textarea>
+
+            </div>
+            <div class="mb-3">
+              <label for="email">结果要求</label>
+              <textarea class="form-control" placeholder="填写具体的结果内容、格式" rows="5" name="task_require"></textarea>
+
+            </div>
+            <hr class="mb-4">
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="check" value="1" name="checkbox">
+              <label class="custom-control-label" for="check">每条数据可能有多个结果</label>
+            </div>
+            <br>
+
+            <div class="row">
+              <div class="col-md-5 mb-3">
+                <label for="country">数据字段数</label>
+                <select class="custom-select d-block w-100" required="" name="data_num">
+                  <option value="1">选择...</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="state">结果字段数</label>
+                <select class="custom-select d-block w-100" required="" name="result_num">
+                  <option value="1">选择...</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please provide a valid state.
+                </div>
+              </div>
+            </div>
+
+            <h4 class="mb-3">数据字段</h4>
+            <div class="row">
+              <div class="col-md-3 mb-3">
+                <label for="cc-expiration">字段1</label>
+                <input  name="data_1" type="text" class="form-control" id="cc-expiration" placeholder="" required="">
+
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="cc-expiration">字段2</label>
+                <input  name="data_2" type="text" class="form-control" id="cc-cvv" placeholder="" required="">
+                <small class="text-muted">如没有则不填写</small>
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="cc-expiration">字段3</label>
+                <input  name="data_3" type="text" class="form-control" id="cc-cvv" placeholder="" required="">
+                <small class="text-muted">如没有则不填写</small>
+              </div>
+            </div>
+
+            <h4 class="mb-3">结果字段</h4>
+
+            <div class="row">
+              <div class="col-md-3 mb-3">
+                <label for="cc-name">字段1</label>
+                <input name="result_1" type="text" class="form-control" id="cc-name" placeholder="" required="">
+
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="cc-number">字段2</label>
+                <input name="result_2" type="text" class="form-control" id="cc-number" placeholder="" required="">
+                <small class="text-muted">如没有则不填写</small>
+              </div>
+            </div>
+
+            <hr class="mb-4">
+            <button class="btn btn-primary btn-lg btn-block" type="submit">下一步：提交数据</button>
+          </form>
+        </div>
+
+      <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2018- TDTS</p>
+        <ul class="list-inline">
+          <li class="list-inline-item"><a href="#">关于我们</a></li>
+          <li class="list-inline-item"><a href="#">联系我们</a></li>
+          <li class="list-inline-item"><a href="#">帮助中心</a></li>
+        </ul>
+      </footer>
+    </div>
+{include file="public/footer" /}

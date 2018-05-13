@@ -1,0 +1,52 @@
+{include file="public/header" title="标注任务" /}
+{include file="public/nav" /}
+    <div class="container">
+      <hr class="mb-4"><hr class="mb-4">
+      <div class="order-md-1">
+          <h3 class="mb-3">标注:{$task.name}</h3>
+          <hr class="mb-4">
+          <form class="needs-validation" novalidate="" action=""  method="post">
+
+            <h4 class="mb-3">数据字段</h4>
+              <input type="hidden" name='tid' value={$task.id}>
+              <input type="hidden" name='td_id' value={$taskdata.id}>
+              {foreach name="print_list" item="vo" key="k" }
+              <div class="row">
+                <div class="mb-3">
+                  <label for="cc-expiration">{$k}:&nbsp;&nbsp;{$vo}</label>
+                </div>
+              </div>
+              {/foreach}
+
+
+            <h4 class="mb-3">结果字段</h4>
+
+            <div class="row">
+              <div class="mb-3">
+                <label for="cc-name">{$task.result_1}</label>
+                <input name="result_1" type="text" class="form-control" id="cc-name" placeholder="" required="">
+              </div>
+              {if condition="$task->result_num>1"}
+              <div class="mb-3">
+                <label for="cc-number">{$task.result_2}</label>
+                <input name="result_2" type="text" class="form-control" id="cc-number" placeholder="" required="">
+              </div>
+              {/if}
+            </div>
+
+            <hr class="mb-4">
+            {if condition="$task->multi_result>0"}<button class="btn btn-warning btn-lg btn-block" type="submit" formaction="{:url('dashboard/task/fill_multi')}">提交并添加新数据</button>{/if}
+            <button class="btn btn-primary btn-lg btn-block" type="submit" formaction="{:url('dashboard/task/fill_action')}">提交数据并开始标记下一条</button>
+          </form>
+        </div>
+
+      <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2018- TDTS</p>
+        <ul class="list-inline">
+          <li class="list-inline-item"><a href="#">关于我们</a></li>
+          <li class="list-inline-item"><a href="#">联系我们</a></li>
+          <li class="list-inline-item"><a href="#">帮助中心</a></li>
+        </ul>
+      </footer>
+    </div>
+{include file="public/footer" /}

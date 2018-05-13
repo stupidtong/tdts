@@ -1,0 +1,97 @@
+{include file="public/header" title="任务" /}
+{include file="public/nav" /}
+    <div class="container">
+      <hr class="mb-4">
+      <section class="jumbotron">
+        <div class="container">
+          <h1 class="jumbotron-heading">{$task.name}</h1><br/>
+          <p class="lead text-muted">任务描述：{$task.task_msg}</p>
+          <p class="lead text-muted">
+            任务要求：{$task.task_require}
+          </p>
+        </div>
+      </section>
+      <p>
+        <a href="{:url('dashboard/task/add_data',['tid' =>$task->id])}" class="btn btn-primary my-2">添加数据</a>
+        <a href="{:url('dashboard/task/invite',['tid' =>$task->id])}" class="btn btn-info my-2">邀请参与者</a>
+        <a href="{:url('dashboard/task/info',['tid' =>$task->id])}" class="btn btn-info my-2">查看标注情况</a>
+        <a href="{:url('dashboard/task/csv_out',['tid' =>$task->id])}" class="btn btn-warning my-2">导出</a>
+        <a href="{:url('dashboard/task/delete',['tid' =>$task->id])}" class="btn btn-danger my-2">删除任务</a>
+      </p>
+      <h4>数据概览</h4>
+
+      <table class="table table-sm">
+        {if condition="$task.data_num==1"}
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>{$task.data_1}</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            {volist name="list" id="taskdata"}
+            <tr>
+              <th scope="row">{$taskdata.id}</th>
+              <td>{$taskdata.data_1}</td>
+              <td><a href="{:url('dashboard/task/delete_data',['tdid' =>$taskdata->id])}">删除</a></td>
+            </tr>
+              {/volist}
+
+
+          </tbody>
+        {/if}
+        {if condition="$task.data_num==2"}
+          <thead>
+            <tr>
+              <th>{$task.data_1}</th>
+              <th>{$task.data_2}</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            {volist name="list" id="taskdata"}
+            <tr>
+              <th scope="row">{$taskdata.data_1}</th>
+              <td>{$taskdata.data_2}</td>
+              <td><a href="{:url('dashboard/task/delete_data',['tdid' =>$taskdata->id])}">删除</a></td>
+            </tr>
+              {/volist}
+
+
+          </tbody>
+        {/if}
+        {if condition="$task.data_num==3"}
+          <thead>
+            <tr>
+              <th>{$task.data_1}</th>
+              <th>{$task.data_2}</th>
+              <th>{$task.data_3}</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            {volist name="list" id="taskdata"}
+            <tr>
+              <th scope="row">{$taskdata.data_1}</th>
+              <td>{$taskdata.data_2}</td>
+              <td>{$taskdata.data_3}</td>
+              <td><a href="{:url('dashboard/task/delete_data',['tdid' =>$taskdata->id])}">删除</a></td>
+            </tr>
+              {/volist}
+
+
+          </tbody>
+        {/if}
+      </table>
+      {$list->render()}
+      <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2018- TDTS</p>
+        <ul class="list-inline">
+          <li class="list-inline-item"><a href="#">关于我们</a></li>
+          <li class="list-inline-item"><a href="#">联系我们</a></li>
+          <li class="list-inline-item"><a href="#">帮助中心</a></li>
+        </ul>
+      </footer>
+    </div>
+{include file="public/footer" /}

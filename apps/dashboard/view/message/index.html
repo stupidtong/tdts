@@ -1,0 +1,30 @@
+{include file="public/header" title="消息列表" /}
+{include file="public/nav" /}
+    <div class="container">
+      <hr class="mb-4">
+      <div class="my-3 p-3 bg-white rounded box-shadow">
+      <h6 class="border-bottom border-gray pb-2 mb-0">消息列表</h6>
+      {volist name="msglist" id="msg"}
+      <div class="media text-muted pt-3">
+        <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+          <strong class="d-block text-gray-dark">@{:nickname($msg.from_id)}</strong>
+          邀请您参与任务：{:task_name($msg.tid)}&nbsp;&nbsp;<a href="{:url('dashboard/message/accept',['mid' =>$msg->id])}">接受</a>&nbsp;&nbsp;<a href="{:url('dashboard/message/delete',['mid' =>$msg->id])}">删除</a><br/>
+          {$msg.msg}
+        </p>
+      </div>
+      {/volist}
+      <small class="d-block text-right mt-3">
+        <a href="{:url('dashboard/message/delete_all')}">全部清空</a>
+      </small>
+    </div>
+
+      <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2018- TDTS</p>
+        <ul class="list-inline">
+          <li class="list-inline-item"><a href="#">关于我们</a></li>
+          <li class="list-inline-item"><a href="#">联系我们</a></li>
+          <li class="list-inline-item"><a href="#">帮助中心</a></li>
+        </ul>
+      </footer>
+    </div>
+{include file="public/footer" /}

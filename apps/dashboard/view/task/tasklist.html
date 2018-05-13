@@ -1,0 +1,65 @@
+{include file="public/header" title="任务列表" /}
+{include file="public/nav" /}
+    <div class="container">
+      <hr class="mb-4">
+
+      <h4>管理的数据标注任务</h4>
+
+      <table class="table table-sm">
+          <thead>
+            <tr>
+              <th>任务名</th>
+              <th>开始时间</th>
+              <th>数据量</th>
+              <th>任务信息</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            {volist name="ownlist" id="task"}
+            <tr>
+              <th scope="row">{$task.name}</th>
+              <td>{$task.stime}</td>
+              <td>{$task->taskdata()->count()}</td>
+              <td>{$task.task_msg}</td>
+              <td><a href="{:url('dashboard/task/index',['tid' =>$task->id])}">管理</a></td>
+            </tr>
+              {/volist}
+
+          </tbody>
+
+      </table>
+      <h4>参与的数据标注任务</h4>
+      <table class="table table-sm">
+          <thead>
+            <tr>
+              <th>任务名</th>
+              <th>开始时间</th>
+              <th>数据量</th>
+              <th>任务信息</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            {volist name="joinlist" id="task"}
+            <tr>
+              <th scope="row">{$task.name}</th>
+              <td>{$task.stime}</td>
+              <td>{$task->taskdata()->count()}</td>
+              <td>{$task.task_msg}</td>
+              <td><a href="{:url('dashboard/task/fill',['tid' =>$task->id])}">标注</a>&nbsp;<a href="{:url('dashboard/task/manage',['tid' =>$task->id])}">标注概况</a></td>
+            </tr>
+              {/volist}
+          </tbody>
+
+      </table>
+      <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2018- TDTS</p>
+        <ul class="list-inline">
+          <li class="list-inline-item"><a href="#">关于我们</a></li>
+          <li class="list-inline-item"><a href="#">联系我们</a></li>
+          <li class="list-inline-item"><a href="#">帮助中心</a></li>
+        </ul>
+      </footer>
+    </div>
+{include file="public/footer" /}

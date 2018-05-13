@@ -1,0 +1,41 @@
+{include file="public/header" title="任务概况" /}
+{include file="public/nav" /}
+    <div class="container">
+      <hr class="mb-4">
+      <h4>基本情况概览</h4>
+      <p>已经标注的数据遍数：{$min}</p>
+      <p>数据数量：{$td_num}</p>
+      <p>结果数量：{$re_num}</p>
+      <hr class="mb-4">
+      <h4>用户填写情况概览</h4>
+
+      <table class="table table-sm">
+
+
+          <thead>
+            <tr>
+              <th>用户</th>
+              <th>完成量</th>
+            </tr>
+          </thead>
+          <tbody>
+            {volist name="ulist" id="row"}
+            <tr>
+              <th scope="row">{:nickname($row->uid)}</th>
+              <td>{:result_filled_by_uid($row->tid,$row->uid)}（{:ceil(result_filled_by_uid($row->tid,$row->uid)*100/$td_num)}%）</td>
+            </tr>
+              {/volist}
+
+
+          </tbody>
+      </table>
+      <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2018- TDTS</p>
+        <ul class="list-inline">
+          <li class="list-inline-item"><a href="#">关于我们</a></li>
+          <li class="list-inline-item"><a href="#">联系我们</a></li>
+          <li class="list-inline-item"><a href="#">帮助中心</a></li>
+        </ul>
+      </footer>
+    </div>
+{include file="public/footer" /}

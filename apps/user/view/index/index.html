@@ -1,0 +1,43 @@
+{include file="public/header" title="用户登录" /}
+{include file="public/nav" /}
+    <div class="container">
+      <hr class="mb-4">
+        <div class="my-5 order-md-1 col-lg-6 container">
+          <h4 class="mb-3">登录</h4>
+          <form class="needs-validation" action="{:url('login')}" method="post" novalidate>
+
+              <div class="mb-3">
+                <label for="firstName">账号</label>
+                <input type="text" class="form-control" id="uname" placeholder="" name="user_name" required>
+                <div class="invalid-feedback">
+                  该项必填。
+                </div>
+              </div>
+
+
+            <div class="mb-3">
+              <label for="address">密码</label>
+              <input name="pwd" type="password" class="form-control"  id="psw" required>
+              <div class="invalid-feedback">
+                该项必填
+              </div>
+            </div>
+
+            <hr class="mb-4">
+            <button class="btn btn-primary btn-lg btn-block" type="submit">登入</button>
+
+            <a class="btn btn-danger btn-lg btn-block" href="#">忘记密码</a>
+          </form>
+
+        </div>
+
+      <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2018- TDTS</p>
+        <ul class="list-inline">
+          <li class="list-inline-item"><a href="#">关于我们</a></li>
+          <li class="list-inline-item"><a href="#">联系我们</a></li>
+          <li class="list-inline-item"><a href="#">帮助中心</a></li>
+        </ul>
+      </footer>
+    </div>
+{include file="public/footer" /}

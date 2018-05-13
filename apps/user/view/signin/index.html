@@ -1,0 +1,82 @@
+{include file="public/header" title="用户注册" /}
+{include file="public/nav" /}
+    <div class="container">
+      <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" src="__static__/img/ico.png" alt="" width="72" height="72">
+        <h2>用户注册</h2>
+        <p class="lead">以下信息对使用网站功能以及找回账号密码至关重要，请认真填写！</p>
+      </div>
+
+        <div class="order-md-1 ">
+          <h4 class="mb-3">用户信息</h4>
+          <form class="needs-validation" action="{:url('add')}" method="post" novalidate>
+
+              <div class="mb-3">
+                <label for="firstName">登录账号</label>
+                <input type="text" class="form-control" id="uname" placeholder="" name="user_name" required>
+                <div class="invalid-feedback">
+                  该项必填。
+                </div>
+              </div>
+
+
+            <div class="mb-3">
+              <label for="username">昵称</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">@</span>
+                </div>
+                <input type="text" class="form-control" id="username" placeholder="Nickname" name="user_nickname" required>
+                <div class="invalid-feedback" style="width: 100%;">
+                  该项必填。
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" id="email" name="user_email" placeholder="you@example.com">
+              <div class="invalid-feedback">
+                请输入合适的E-mail格式。
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="address">密码</label>
+              <input name="user_pwd" type="password" class="form-control"  id="psw" placeholder="Password" required>
+              <div class="invalid-feedback">
+                该项必填
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="address2">单位<span class="text-muted">(可选)</span></label>
+              <input type="text" class="form-control" id="address2" placeholder="">
+            </div>
+
+
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="same-address">
+              <label class="custom-control-label" for="same-address">我已同意《TDST用户使用规定》</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="save-info">
+              <label class="custom-control-label" for="save-info">对TDST上的相关信息接收邮件提醒</label>
+            </div>
+
+            <hr class="mb-4">
+            <button class="btn btn-primary btn-lg btn-block" type="submit">注册</button>
+          </form>
+
+        </div>
+
+      <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2018- TDTS</p>
+        <ul class="list-inline">
+          <li class="list-inline-item"><a href="#">关于我们</a></li>
+          <li class="list-inline-item"><a href="#">联系我们</a></li>
+          <li class="list-inline-item"><a href="#">帮助中心</a></li>
+        </ul>
+      </footer>
+    </div>
+{include file="public/footer" /}

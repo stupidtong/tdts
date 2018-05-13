@@ -1,0 +1,98 @@
+{include file="public/header" title="任务" /}
+{include file="public/nav" /}
+    <div class="container">
+      <hr class="mb-4">
+      <section class="jumbotron">
+        <div class="container">
+          <h1 class="jumbotron-heading">{$task.name}</h1><br/>
+          <p class="lead text-muted">任务描述：{$task.task_msg}</p>
+          <p class="lead text-muted">
+            任务要求：{$task.task_require}
+          </p>
+          <a href="{:url('dashboard/task/fill',['tid' =>$task->id])}" class="btn btn-primary my-2">标注</a>
+        </div>
+      </section>
+      <h4>数据概览</h4>
+      <p class="lead text-muted">已标注数据：{:result_filled($task->id)}/{$task->taskdata()->count()}</p>
+
+      <table class="table table-sm">
+        {if condition="$task.data_num==1"}
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>{$task.data_1}</th>
+              <th>已填写结果数</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            {volist name="list" id="taskdata"}
+            <tr>
+              <th scope="row">{$taskdata.id}</th>
+              <td>{$taskdata.data_1}</td>
+              <td>{:result_count($taskdata.id)}</td>
+              <td><a href="{:url('dashboard/task/td_result',['tdid' =>$taskdata->id])}">查看结果</a></td>
+            </tr>
+              {/volist}
+
+
+          </tbody>
+        {/if}
+        {if condition="$task.data_num==2"}
+          <thead>
+            <tr>
+              <th>{$task.data_1}</th>
+              <th>{$task.data_2}</th>
+              <th>已填写结果数</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            {volist name="list" id="taskdata"}
+            <tr>
+              <th scope="row">{$taskdata.data_1}</th>
+              <td>{$taskdata.data_2}</td>
+              <td>{:result_count($taskdata.id)}</td>
+              <td><a href="{:url('dashboard/task/td_result',['tdid' =>$taskdata->id])}">查看结果</a></td>
+            </tr>
+              {/volist}
+
+
+          </tbody>
+        {/if}
+        {if condition="$task.data_num==3"}
+          <thead>
+            <tr>
+              <th>{$task.data_1}</th>
+              <th>{$task.data_2}</th>
+              <th>{$task.data_3}</th>
+              <th>已填写结果数</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            {volist name="list" id="taskdata"}
+            <tr>
+              <th scope="row">{$taskdata.data_1}</th>
+              <td>{$taskdata.data_2}</td>
+              <td>{$taskdata.data_3}</td>
+              <td>{:result_count($taskdata.id)}</td>
+              <td><a href="{:url('dashboard/task/td_result',['tdid' =>$taskdata->id])}">查看结果</a></td>
+            </tr>
+              {/volist}
+
+
+          </tbody>
+        {/if}
+      </table>
+      {$list->render()}
+      <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2018- TDTS</p>
+        <ul class="list-inline">
+          <li class="list-inline-item"><a href="#">关于我们</a></li>
+          <li class="list-inline-item"><a href="#">联系我们</a></li>
+          <li class="list-inline-item"><a href="#">帮助中心</a></li>
+        </ul>
+      </footer>
+    </div>
+{include file="public/footer" /}

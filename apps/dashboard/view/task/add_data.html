@@ -1,0 +1,25 @@
+{include file="public/header" title="添加数据" /}
+{include file="public/nav" /}
+    <div class="container">
+      <hr class="mb-4"><hr class="mb-4">
+      <div class="order-md-1">
+          <h4 class="mb-3">添加数据：{$task.name}</h4>
+          <FORM method="post" enctype="multipart/form-data" class="form" action="{:url('add_data_action',['tid' =>$task.id])}">
+            <br/>
+            <INPUT type="file" class="files" name="files"><br/><br/>
+              <p class="lead text-muted">注意：<br/>1.提交文件体积最大支持2MB，可分多次上传。<br/>2.目前仅支持CSV格式文件，默认读取包括首行在内的每行前{$task.data_num}个数据。<br/></p>
+              <hr class="mb-4">
+            <INPUT type="submit" class="btn btn-primary btn-lg btn-block" value=" 提交 ">
+          </FORM>
+        </div>
+
+      <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2018- TDTS</p>
+        <ul class="list-inline">
+          <li class="list-inline-item"><a href="#">关于我们</a></li>
+          <li class="list-inline-item"><a href="#">联系我们</a></li>
+          <li class="list-inline-item"><a href="#">帮助中心</a></li>
+        </ul>
+      </footer>
+    </div>
+{include file="public/footer" /}
